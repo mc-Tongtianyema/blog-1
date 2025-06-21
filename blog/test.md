@@ -1,6 +1,6 @@
 # Markdown test for blog
 
-为 **Samable** 的 Github Pages 博客创建了首个页面。
+这是 **Samable** 为他的 Github Pages 博客创建的首个页面。
 你可以访问 <https://samable07.github.io/> 到博客主页，但是不知道不开加速器能不能正常访问。 ：（
 以后可能会写些什么，现在只是随便玩玩。
 
