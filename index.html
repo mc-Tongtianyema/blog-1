@@ -9,13 +9,18 @@
 <body>
     <div id="content"></div>
 
+    <div class="pulse-button" id="btn1">第一篇文章</div>
     <script>
+    document.getElementById("btn1").addEventListener("click", function() {
+        alert("按钮被点击了！");
         // 异步加载 Markdown 文件并渲染
         fetch('/blog/test.md')
             .then(response => response.text())
             .then(md => {
-                document.getElementById('content').innerHTML = marked.parse(md);
+                document.getElementById('btn1').innerHTML = marked.parse(md);
             });
+    })
     </script>
+
 </body>
 </html>
