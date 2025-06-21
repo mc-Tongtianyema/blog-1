@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<style>
+.pulse-button {
+    padding: 15px 30px;
+    background: #73a4ee;
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+</style>
 <html>
 <head>
     <title>Samable的博客</title>
@@ -7,6 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
+    <p>test</p>
     <div id="content"></div>
     <div class="pulse-button" id="btn1">第一篇文章</div>
     <script>
@@ -16,8 +27,6 @@
         window.location.href = `./blog/article.html?blog=${encodeURIComponent(tempKey)}`;
     })
     </script>
-
-    <p>test</p>
 
 </body>
 </html>

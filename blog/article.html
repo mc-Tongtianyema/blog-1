@@ -12,11 +12,13 @@
         // 异步加载 Markdown 文件并渲染
     const urlParams = new URLSearchParams(window.location.search);
     const receivedKey = urlParams.get('blog');
-    fetch('/' + receivedKey + '.md')
+    console.log('./' + receivedKey + '.md')
+    fetch('./' + receivedKey + '.md')
         .then(response => response.text())
         .then(md => {
             document.getElementById('content').innerHTML = marked.parse(md);
         });
     </script>
+    <p>wasd</p>
 </body>
 </html>

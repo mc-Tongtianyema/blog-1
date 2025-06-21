@@ -4,20 +4,11 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color:#f8f6dc
+    background-color:#e6e6dc
 }
 
 article {
     margin-bottom: 40px;
     border-bottom: 1px solid #eee;
     padding-bottom: 20px;
-}
-
-.pulse-button {
-    padding: 15px 30px;
-    background: #73a4ee;
-    color: white;
-    border: none;
-    cursor: pointer;
-    position: relative;
 }
