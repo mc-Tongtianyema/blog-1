@@ -15,7 +15,7 @@ article {
 
 .pulse-button {
     padding: 15px 30px;
-    background: #ff4757;
+    background: #73a4ee;
     color: white;
     border: none;
     cursor: pointer;
@@ -23,7 +23,7 @@ article {
 }
 
 .pulse-button:hover {
-    animation: pulse 1s infinite;
+    animation: pulse 10s infinite;
 }
 
 @keyframes pulse {
