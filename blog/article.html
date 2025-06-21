@@ -11,7 +11,7 @@
     <script>
         // 异步加载 Markdown 文件并渲染
     const urlParams = new URLSearchParams(window.location.search);
-    const receivedKey = urlParams.get('tempKey');
+    const receivedKey = urlParams.get('blog');
     fetch('/' + receivedKey + '.md')
         .then(response => response.text())
         .then(md => {
