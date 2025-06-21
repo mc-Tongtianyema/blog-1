@@ -33,7 +33,6 @@ body {
     margin-left: 20%;
     margin-right: 20%;
     margin-top: 8px;
-
 }
 
 .pulse-button:hover {
@@ -69,6 +68,28 @@ body {
     margin-top: 3rem;
 }
 
+.web-link{
+    width: 45px;
+    height: 45px;
+    background-color: white;
+    border-radius: 50%; /* 圆形 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.web-link img{
+    width: 24px;
+    height: 24px;
+}
+
+.web-linkers{
+    margin-right: 5%;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
 /* 移动端适配*/
 @media (max-width: 800px) {
     .title-view{
@@ -76,6 +97,13 @@ body {
     }
     .blog-content{
         font-size: large;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .btn-found-date-text{
+        font-size: 12px;
+    }
+    .pulse-button{
         margin-left: 10%;
         margin-right: 10%;
     }
