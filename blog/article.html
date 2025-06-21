@@ -2,16 +2,18 @@
 <html>
 <head>
     <title>Samable的博客文章</title>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="/assets/css/style.css">
     <!-- 引入 marked.js -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <div id="content"></div>
+    <div class="blog-content" id="content"></div>
     <script>
         // 异步加载 Markdown 文件并渲染
     const urlParams = new URLSearchParams(window.location.search);
     const receivedKey = urlParams.get('blog');
+    document.title = "Samable的博客文章-" + receivedKey;
     console.log('./' + receivedKey + '.md')
     fetch('./' + receivedKey + '.md')
         .then(response => response.text())
@@ -19,6 +21,10 @@
             document.getElementById('content').innerHTML = marked.parse(md);
         });
     </script>
-    <p>wasd</p>
+<div class="footer">
+<p>代码和文章由 Samable 创建</p><br>
+<p>使用 Github Pages 服务</p>
+</div>
 </body>
+
 </html>

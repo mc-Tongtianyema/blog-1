@@ -1,14 +1,58 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color:#e6e6dc
+    background-color:#e6e6dc;
+    min-height: 100vh;
 }
 
-article {
-    margin-bottom: 40px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
+.container{
+    display: flex;
+    gap: 50px;
+}
+
+.blog-content{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.pulse-button {
+    border-radius: 10px;
+    padding: 15px 30px;
+    background: #ffffff00;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    font-size: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.pulse-button:hover {
+    background: #00000023;
+    color: rgb(0, 0, 0);
+}
+
+.title-view{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.btn-found-date-text{
+    color: rgb(110, 110, 110);
+    font-size: 15px;
+}
+
+.footer {
+    clear:both;
+    margin-top: 20px;
+    display: flex;
+    justify-content: left;
+    padding: 50px;
+    background-color: #333333;
+    color: #fff;
+    padding-left: 100px;
+    width: auto;
 }

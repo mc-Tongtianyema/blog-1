@@ -1,32 +1,35 @@
 <!DOCTYPE html>
-<style>
-.pulse-button {
-    padding: 15px 30px;
-    background: #73a4ee;
-    color: white;
-    border: none;
-    cursor: pointer;
-    position: relative;
-}
-</style>
 <html>
 <head>
     <title>Samable的博客</title>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="/assets/css/style.css">
     <!-- 引入 marked.js -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <p>test</p>
+    <p style="margin-left:20%;margin-right:20%">欢迎！建设中ing</p>
     <div id="content"></div>
-    <div class="pulse-button" id="btn1">第一篇文章</div>
+
+    <div class="pulse-button" id="btn1"><div class="title-view">test</div>
+        <div class="container">
+            <div class="btn-found-date-text">创建日期: 2025/6/21</div>
+            <div class="btn-found-date-text">更新日期: 2025/6/21</div>
+        </div>
+    </div>
     <script>
-    document.getElementById("btn1").addEventListener("click", function() {
+        document.getElementById("btn1").addEventListener("click", function() {
         // alert("按钮被点击了！");
         const tempKey = "test"
         window.location.href = `./blog/article.html?blog=${encodeURIComponent(tempKey)}`;
     })
     </script>
 
+<div class="footer">
+<p>代码和文章由 Samable 创建</p><br>
+<p>使用 Github Pages 服务</p>
+</div>
+
 </body>
+
 </html>
