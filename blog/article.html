@@ -3,17 +3,21 @@
 <head>
     <title>Samable的博客文章</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/style.css">
     <!-- 引入 marked.js -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
+    <div class="page-title" id="page-title"></div>
+    <div></div>
     <div class="blog-content" id="content"></div>
     <script>
         // 异步加载 Markdown 文件并渲染
     const urlParams = new URLSearchParams(window.location.search);
     const receivedKey = urlParams.get('blog');
     document.title = "Samable的博客文章-" + receivedKey;
+    document.getElementById('page-title').innerHTML = receivedKey;
     console.log('./' + receivedKey + '.md')
     fetch('./' + receivedKey + '.md')
         .then(response => response.text())
@@ -21,10 +25,13 @@
             document.getElementById('content').innerHTML = marked.parse(md);
         });
     </script>
-<div class="footer">
-<p>代码和文章由 Samable 创建</p><br>
-<p>使用 Github Pages 服务</p>
+
+<!-- 页脚 -->
+<div class="fixed-footer">
+<p style="text-align: center;">代码和文章由 Samable 创建</p>
+<a style="text-align: left; color: rgb(230, 230, 230); margin: 20px;" href="https://github.com/Samable07/samable07.github.io">源代码</a>
 </div>
+
 </body>
 
 </html>

@@ -3,15 +3,15 @@
 <head>
     <title>Samable的博客</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <!-- 引入 marked.js -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <p style="margin-left:20%;margin-right:20%">欢迎！建设中ing</p>
-    <div id="content"></div>
 
-    <div class="pulse-button" id="btn1"><div class="title-view">test</div>
+    <!-- <div class="pulse-button" id="btn1"><div class="title-view">firstblog</div>
         <div class="container">
             <div class="btn-found-date-text">创建日期: 2025/6/21</div>
             <div class="btn-found-date-text">更新日期: 2025/6/21</div>
@@ -19,17 +19,53 @@
     </div>
     <script>
         document.getElementById("btn1").addEventListener("click", function() {
-        // alert("按钮被点击了！");
-        const tempKey = "test"
+        // alert("按钮被点击了");
+        const tempKey = "firstblog"
         window.location.href = `./blog/article.html?blog=${encodeURIComponent(tempKey)}`;
     })
-    </script>
+    </script> -->
 
-<div class="footer">
-<p>代码和文章由 Samable 创建</p><br>
-<p>使用 Github Pages 服务</p>
+<!-- 文章列表 -->
+<script>
+  // 定义函数，显示单独的一个card
+function createCard(title, publish, update) {
+    return `
+    <div class="pulse-button" data-title="${encodeURIComponent(title)}">
+        <div class="title-view">${title}</div>
+        <div class="container">
+            <div class="btn-found-date-text">创建日期: ${publish}</div>
+            <div class="btn-found-date-text">更新日期: ${update}</div>
+        </div>
+    </div>
+    `;
+}
+
+// 确保DOM已加载
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("article-card").innerHTML = 
+    // 文章列表
+        createCard("一些网站的分享", "2025/6/21", "2025/6/22") + 
+        createCard("关于", "2025/6/21", "2025/6/22");
+
+    // 统一事件处理
+    document.querySelectorAll('.pulse-button').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const title = this.getAttribute('data-title');
+            window.location.href = `./blog/article.html?blog=${title}`;
+        });
+    });
+});
+</script>
+
+<div id="article-card"></div>
+
+<div class="blog-content" id="content"></div>
+
+<!-- 页脚 -->
+<div class="fixed-footer">
+<p style="text-align: center;">代码和文章由 Samable 创建</p>
+<a style="text-align: left; color: rgb(230, 230, 230); margin: 20px;" href="https://github.com/Samable07/samable07.github.io">源代码</a>
 </div>
 
 </body>
-
 </html>

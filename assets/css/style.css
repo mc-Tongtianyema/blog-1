@@ -2,9 +2,10 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0 auto;
-    padding: 20px;
     background-color:#e6e6dc;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .container{
@@ -13,14 +14,17 @@ body {
 }
 
 .blog-content{
+    font-size: medium;
     margin-left: 20%;
     margin-right: 20%;
+    padding-top: 20px;
+    flex: 1;  /* 内容区域撑满剩余空间 */
 }
 
 .pulse-button {
     border-radius: 10px;
     padding: 15px 30px;
-    background: #ffffff00;
+    background: #d8d8d82f;
     color: rgb(0, 0, 0);
     border: none;
     cursor: pointer;
@@ -28,6 +32,8 @@ body {
     font-size: 20px;
     margin-left: 20%;
     margin-right: 20%;
+    margin-top: 8px;
+
 }
 
 .pulse-button:hover {
@@ -45,14 +51,32 @@ body {
     font-size: 15px;
 }
 
-.footer {
-    clear:both;
-    margin-top: 20px;
-    display: flex;
-    justify-content: left;
-    padding: 50px;
-    background-color: #333333;
-    color: #fff;
-    padding-left: 100px;
-    width: auto;
+.fixed-footer {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: rgb(230, 230, 230);
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    padding-bottom: 20px;
+}
+
+.page-title{
+    font-size: 35px;
+    font-weight: 700;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+}
+
+/* 移动端适配*/
+@media (max-width: 800px) {
+    .title-view{
+        font-size: 28px;
+    }
+    .blog-content{
+        font-size: large;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
 }
