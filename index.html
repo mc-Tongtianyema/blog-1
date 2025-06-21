@@ -11,8 +11,9 @@
     <div class="pulse-button" id="btn1">第一篇文章</div>
     <script>
     document.getElementById("btn1").addEventListener("click", function() {
-        alert("按钮被点击了！");
-        window.location.replace("/blog/test.html")
+        // alert("按钮被点击了！");
+        const tempKey = "test"
+        window.location.replace = `/blog/article.html?blog=${encodeURIComponent(tempKey)}`;
     })
     </script>
 

@@ -8,9 +8,11 @@
 </head>
 <body>
     <div id="content"></div>
-<script>
+    <script>
         // 异步加载 Markdown 文件并渲染
-    fetch('/blog/test.md')
+    const urlParams = new URLSearchParams(window.location.search);
+    const receivedKey = urlParams.get('tempKey');
+    fetch('/' + receivedKey + '.md')
         .then(response => response.text())
         .then(md => {
             document.getElementById('content').innerHTML = marked.parse(md);
