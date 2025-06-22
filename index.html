@@ -4,7 +4,7 @@
     <title>Samable的主页</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
     <!-- 引入 marked.js -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
@@ -45,7 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("article-card").innerHTML = 
     // 文章列表
         createCard("一些网站的分享", "2025/6/21", "2025/6/22") + 
-        createCard("关于", "2025/6/21", "2025/6/22");
+        createCard("关于", "2025/6/21", "2025/6/22") +
+        createCard("Markdown样式测试", "0000/00/00", "0000/00/00");
 
     // 统一事件处理
     document.querySelectorAll('.pulse-button').forEach(btn => {
@@ -67,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <a style="text-align: left; color: rgb(230, 230, 230); margin: 20px;" href="https://github.com/Samable07/samable07.github.io">源代码</a>
 <div class="web-linkers">
     <a href="https://space.bilibili.com/662448670"><div class="web-link"><img src="assets\images\bilibili_icon.ico"></div></a>
+    <a href="https://www.douyin.com/user/MS4wLjABAAAA2rS4BQAzryW2zhbsvXk_1NzlFip2bbNxK28pR14C-cE_kudizj82gFUB-SJqGOhH"><div class="web-link"><img src="assets\images\douyin_icon.svg"></div></a>
     <a href="https://github.com/Samable07"><div class="web-link"><img src="assets\images\github_icon.svg"></div></a>
 </div>
 </div>

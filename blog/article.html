@@ -4,14 +4,25 @@
     <title>Samable的博客文章</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
     <!-- 引入 marked.js -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <div class="page-title" id="page-title"></div>
+    <!--返回按钮-->
+    <div style="display: flex; align-items: center; gap: 5px;">
+    <div class="back-btn" id="back-btn"><img src="/assets/images/back.png" width="35px" height="35px" style="margin-top: 9px; margin-left: 9px;"></div>
+    <script>
+        document.getElementById("back-btn").addEventListener("click", function() {
+        // alert("按钮被点击了");
+        window.location.href = `/index.html`;
+    })
+    </script>
 
+    <div class="page-title" id="page-title"></div>
+    </div>
     <div class="blog-content" id="content"></div>
+
     <script>
         // 异步加载 Markdown 文件并渲染
     const urlParams = new URLSearchParams(window.location.search);
@@ -32,6 +43,7 @@
 <a style="text-align: left; color: rgb(230, 230, 230); margin: 20px;" href="https://github.com/Samable07/samable07.github.io">源代码</a>
 <div class="web-linkers">
     <a href="https://space.bilibili.com/662448670"><div class="web-link"><img src="\assets\images\bilibili_icon.ico"></div></a>
+    <a href="https://www.douyin.com/user/MS4wLjABAAAA2rS4BQAzryW2zhbsvXk_1NzlFip2bbNxK28pR14C-cE_kudizj82gFUB-SJqGOhH"><div class="web-link"><img src="\assets\images\douyin_icon.svg"></div></a>
     <a href="https://github.com/Samable07"><div class="web-link"><img src="\assets\images\github_icon.svg"></div></a>
 </div>
 </div>

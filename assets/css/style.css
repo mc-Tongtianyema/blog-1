@@ -56,16 +56,8 @@ body {
     color: rgb(230, 230, 230);
     padding-top: 20px;
     border-top: 1px solid #444;
-    padding-bottom: 20px;
-}
-
-.page-title{
-    font-size: 35px;
-    font-weight: 700;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-bottom: 2rem;
-    margin-top: 3rem;
+    padding-bottom: 40px;
+    margin-top: 40px;
 }
 
 .web-link{
@@ -90,6 +82,30 @@ body {
     justify-content: flex-end;
 }
 
+.page-title{
+    font-size: 35px;
+    font-weight: 700;
+    margin-left: 1%;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+.back-btn{
+    width: 55px;
+    height: 55px;
+    margin-left: 20%;
+    display: flex;
+    justify-content: flex-end;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #00000000;
+    border-radius: 20px;
+}
+
+.back-btn:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 /* 移动端适配*/
 @media (max-width: 800px) {
     .title-view{
@@ -107,4 +123,40 @@ body {
         margin-left: 10%;
         margin-right: 10%;
     }
+    .back-btn{
+        margin-left: 5%;
+    }
+}
+
+/* Markdown 样式 */
+blockquote{
+    border-left: 5px solid #d1d1d1;
+    margin-left: 25px;
+    p{
+        margin-left: 20px;
+    }
+}
+
+a{
+    color: rgb(19, 89, 158);
+    text-decoration: none;
+    word-break: break-all;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+code{
+    background-color: rgb(219, 219, 219);
+    border-radius: 4px;
+    padding: 0.225rem 0.35rem;
+}
+
+pre code{
+    display: block;
+    width: 90%;
+    padding-left: 20px;
+    overflow: hidden;
+    overflow-x: auto;
 }
