@@ -160,3 +160,32 @@ pre code{
     overflow: hidden;
     overflow-x: auto;
 }
+
+/* 卡片 */
+.custom-card {
+    border-left: 8px solid #8f8f8f;
+    background-color: rgb(219, 219, 219);
+    border-radius: 4px;
+    padding: 0.225rem 0.35rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 90%;
+    word-break: normal;
+    word-wrap:break-word;
+    margin-top: 10px;
+}
+
+.custom-card-warning {
+    border-left: 8px solid #c48220;
+    background-color: #fff8e1;
+}
+
+.custom-card-info {
+    border-left: 8px solid #2196f3;
+    background-color: #e3f2fd;
+}
+
+.custom-card-danger {
+    border-left: 8px solid #f44336;
+    background-color: #ffebee;
+}

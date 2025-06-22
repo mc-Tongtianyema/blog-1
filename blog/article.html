@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
     <!-- 引入 marked.js -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!--引入自定义 markdown-->
+    <script src="/markdown_ex.js"></script>
 </head>
 <body>
     <!--返回按钮-->
     <div style="display: flex; align-items: center; gap: 5px;">
     <div class="back-btn" id="back-btn"><img src="/assets/images/back.png" width="35px" height="35px" style="margin-top: 9px; margin-left: 9px;"></div>
     <script>
-        document.getElementById("back-btn").addEventListener("click", function() {
+    document.getElementById("back-btn").addEventListener("click", function() {
         // alert("按钮被点击了");
         window.location.href = `/index.html`;
     })
