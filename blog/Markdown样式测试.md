@@ -57,4 +57,4 @@ _下划线_
 ---
 
 注：  
-<sup>1</sup> 属于自制 Markdown
+<sup>1</sup> 属于自制 Markdown，并不兼容原版 Markdown 语法。
