@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
-    <!-- 引入 marked.js -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->    <!-- 引入 marked.js -->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script><!-- 引入jquery-->
 </head>
 <body>
     <p style="margin-left:20%;margin-right:20%">欢迎！建设中ing</p>
@@ -24,13 +24,15 @@
         window.location.href = `./blog/article.html?blog=${encodeURIComponent(tempKey)}`;
     })
     </script> -->
+    
+<div id="article-card"></div>
 
 <!-- 文章列表 -->
-<script>
-  // 定义函数，显示单独的一个card
-function createCard(title, publish, update) {
+<script type="application/javascript"> 
+// 创建card
+function createCard(title, publish, update, id) {
     return `
-    <div class="pulse-button" data-title="${encodeURIComponent(title)}">
+    <div class="pulse-button" data-title="${encodeURIComponent(title)}" data-id="${encodeURIComponent(id)}">
         <div class="title-view">${title}</div>
         <div class="container">
             <div class="btn-found-date-text">创建日期: ${publish}</div>
@@ -40,26 +42,43 @@ function createCard(title, publish, update) {
     `;
 }
 
-// 确保DOM已加载
+// 等待DOM加载完成
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById("article-card").innerHTML = 
-    // 文章列表
-        createCard("一维柏林噪声示意", "2025/7/4", "2025/7/4") + 
-        createCard("一些网站的分享", "2025/6/21", "2025/7/4") + 
-        createCard("关于", "2025/6/21", "2025/6/22") +
-        createCard("Markdown样式测试", "null", "null");
-
-    // 统一事件处理
-    document.querySelectorAll('.pulse-button').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const title = this.getAttribute('data-title');
-            window.location.href = `./blog/article.html?blog=${title}`;
-        });
+    // AJAX获取文章信息
+    $.ajax({
+        url: "blog/articleinfo.json",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            console.log(data);
+            const container = document.getElementById("article-card");
+            let htmlContent = '';
+            
+            // 遍历数据并拼接HTML
+            $.each(data, function(infoIndex, info) {
+                htmlContent += createCard(info["title"], info["publish"], info["update"], info["id"]);
+            });
+            
+            // 一次性设置HTML
+            container.innerHTML = htmlContent;
+            
+            // 事件绑定
+            container.addEventListener('click', function(e) {
+                const button = e.target.closest('.pulse-button');
+                if (button) {
+                    const id = button.getAttribute('data-id');
+                    window.location.href = `./blog/article.html?blog=${id}`;
+                }
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error("Error loading article info:", status, error);
+        }
     });
 });
-</script>
 
-<div id="article-card"></div>
+
+</script>
 
 <div class="blog-content" id="content"></div>
 

@@ -8,17 +8,24 @@ body {
     flex-direction: column;
 }
 
-.container{
+.container {
     display: flex;
     gap: 50px;
 }
 
-.blog-content{
+.blog-content {
     font-size: medium;
     margin-left: 20%;
     margin-right: 20%;
     padding-top: 20px;
     flex: 1;  /* 内容区域撑满剩余空间 */
+}
+
+.timecontainer {
+    font-size: medium;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 20px;
 }
 
 .pulse-button {
@@ -86,7 +93,7 @@ body {
     font-size: 35px;
     font-weight: 700;
     margin-left: 1%;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     margin-top: 3rem;
 }
 
@@ -94,6 +101,7 @@ body {
     width: 55px;
     height: 55px;
     margin-left: 20%;
+    margin-top: 2rem;
     display: flex;
     justify-content: flex-end;
     display: inline-block;
@@ -125,6 +133,11 @@ body {
     }
     .back-btn{
         margin-left: 5%;
+    }
+    .timecontainer{
+        font-size: large;
+        margin-left: 10%;
+        margin-right: 10%;
     }
 }
 

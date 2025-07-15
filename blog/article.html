@@ -9,6 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!--引入自定义 markdown-->
     <script src="/markdown_ex.js"></script>
+    <!-- 引入jquery-->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
     <!--返回按钮-->
@@ -23,20 +25,73 @@
 
     <div class="page-title" id="page-title"></div>
     </div>
+
+    <div class=“blog-time” id="time"></div>
     <div class="blog-content" id="content"></div>
 
-    <script>
-        // 异步加载 Markdown 文件并渲染
+    <script type="application/javascript">
     const urlParams = new URLSearchParams(window.location.search);
-    const receivedKey = urlParams.get('blog');
-    document.title = "Samable的博客文章-" + receivedKey;
-    document.getElementById('page-title').innerHTML = receivedKey;
-    console.log('./' + receivedKey + '.md')
-    fetch('./' + receivedKey + '.md')
-        .then(response => response.text())
-        .then(md => {
-            document.getElementById('content').innerHTML = marked.parse(md);
+    const receivedID = urlParams.get('blog');
+    
+    // 获取JSON数据
+    function createTime(publish, update) {
+    return `
+        <div class="timecontainer">
+            <div style="display: flex;flex-wrap: nowrap;">
+            <div class="btn-found-date-text">创建日期: ${publish}</div>
+            <div class="btn-found-date-text" style="margin-left: 20px;">更新日期: ${update}</div>
+            </div>
+            <hr style="display: reset;"></hr>
+        </div>
+    `;
+    }
+
+    function fetchtitle() {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: "articleinfo.json",
+            type: "GET",
+            dataType: "json",
+            success: resolve,
+            error: reject
+            })
+        })
+    }
+
+    // 加载 Markdown 文件并渲染
+    fetchtitle()
+        .then(data => {
+            console.log(data); // 成功获取数据
+            const targetItem = data.find(item => item.id === Number(receivedID));
+            if (targetItem) {
+                console.log(targetItem.title);
+                let article_title = targetItem.title;
+                let article_publish = targetItem.publish;
+                let article_update = targetItem.update;
+                // 页面处理
+                document.title = "Samable的博客文章-" + article_title;
+                document.getElementById('page-title').innerHTML = article_title;
+                // console.log('./' + article_title + '.md')
+                fetch('./' + article_title + '.md')
+                    .then(response => response.text())
+                    .then(md => {
+                        // 写日期
+                        const timecontainer = document.getElementById("time");
+                        let htmlContent = createTime(article_publish, article_update);
+                        timecontainer.innerHTML = htmlContent;
+                        // 写内容
+                        document.getElementById('content').innerHTML = marked.parse(md);
+                    });
+            } else {
+                console.log("未找到数据");
+            }
+        })
+        .catch(error => {
+            console.error("加载失败:", error);
         });
+    
+
+
     </script>
 
 <!-- 页脚 -->
