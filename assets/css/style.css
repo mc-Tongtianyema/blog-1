@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0 auto;
-    background-color:#e6e6dc;
+    background-color:#e6e6dce7;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -125,7 +125,7 @@ body {
         margin-right: 10%;
     }
     .btn-found-date-text{
-        font-size: 12px;
+        font-size: 14px;
     }
     .pulse-button{
         margin-left: 10%;
@@ -161,9 +161,11 @@ a:hover{
 }
 
 code{
-    background-color: rgb(219, 219, 219);
+    background-color: #dfdfdf;
     border-radius: 4px;
     padding: 0.225rem 0.35rem;
+    border-top: 0px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 pre code{
@@ -172,13 +174,7 @@ pre code{
     padding-left: 20px;
     overflow: hidden;
     overflow-x: auto;
-}
-
-
-/* 防止其他样式覆盖 */
-#content img {
-  max-width: none !important;
-  height: auto !important;
+    border-top: 35px solid #cacaca;
 }
 
 /* 卡片 */
