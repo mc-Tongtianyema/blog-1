@@ -16,6 +16,13 @@ def fib2(n):
 
 ```
 
+- 图片
+
+> 过长可以横向滑动
+
+![图示1.png](https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAI2MWh3cPzeYPoAAd-JrrSVo4V9scXOnwACiBcAAub7wFfvO02_SOvp-jYE.png)
+
+
 - code
 
 `114514`
@@ -49,8 +56,7 @@ _下划线_
 [[warning | 注意：这是一个警告！
 - 这是一个 Card
 - Card 内可以嵌套 `markdown`]]
-[[info|注意：这是一个信息!
-它非常长1145141919810114514191981011451419198101145141919810测试长文本换行]]
+[[ info|注意：这是一个信息! ]]
 [[danger| 注意：这很危险！]]
 [[|这是一个card[link]()]]
 

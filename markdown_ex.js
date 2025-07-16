@@ -61,3 +61,55 @@ return{
 }
 }
 marked.use(card());
+
+// 图片重写
+marked.setOptions({ breaks: true, gfm: true }); // 初始化防BUG
+function imageExtension() {
+  return {
+    extensions: [{
+      name: 'image',
+      level: 'inline',
+      start(src) { return src.indexOf('!['); },
+      tokenizer(src, tokens) {
+        const rule = /^!\[(.*?)\]\((.*?)(?:\s+"(.*?)")?\)/; // 匹配 ![alt](src "title")
+        const match = rule.exec(src);
+        if (match) {
+          return {
+            type: 'image',
+            raw: match[0],
+            alt: match[1],
+            href: match[2],
+            title: match[3] || ''
+          };
+        }
+      },
+      renderer(token) {
+        // 你的自定义图片结构（带滚动容器）
+        return `
+          <div class="img-scroll-container" style="
+            overflow-x: auto;
+            padding-left: 20px;
+          ">
+            <img
+              src="${token.href}"
+              alt="${token.alt}"
+              style="
+                display: block;
+                width: 90%;
+                min-width: min-content;
+              "
+              ${token.title ? `title="${token.title}"` : ''}
+              loading="lazy"
+            >
+          </div>
+        `;
+      }
+    }]
+  };
+}
+
+// 3. 应用图片扩展
+marked.use(imageExtension());
+
+// 4. 初始化marked（保持你的原有配置）
+marked.setOptions({ breaks: false, gfm: true });
