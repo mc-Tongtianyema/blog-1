@@ -88,11 +88,11 @@ function image() {
                 return `
                     <div class="img-scroll-container" style="overflow-x: auto;">
                         <img src="${token.href}" alt="${token.alt}" 
-                            style="display: block; min-width: min-content;"
+                            style="display: block; min-width: min-content; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
                             ${token.title ? `title="${token.title}"` : ''}
                             loading="lazy">
-                    <p style="text-align: center; color: #8b8b8bff;">${token.alt}</p>
                     </div>
+                    <p style="text-align: center; color: #8b8b8bff;">${token.alt}</p>
                 `;
             }
         }]
@@ -100,4 +100,59 @@ function image() {
 }
 marked.use(image());
 
-marked.setOptions({ breaks: false, gfm: true }); // 初始化防BUG
+// codebox
+marked.setOptions({ breaks: true, gfm: true }); // 初始化防BUG
+
+function codeBox() {
+    return {
+        extensions: [{
+            name: 'codeBox',
+            level: 'block',
+            start(src) { 
+                return src.trimStart().startsWith('```') ? 0 : undefined;
+            },
+            tokenizer(src, tokens) {
+                // 支持三种格式：
+                // 1. ```lang [title]
+                // 2. ```lang
+                // 3. ```
+                const rule = /^```([a-zA-Z0-9]*)(?:\s+\[([^\]]+)\])?\n([\s\S]*?)\n```/;
+                const match = rule.exec(src);
+                if (match) {
+                    return {
+                        type: 'codeBox',
+                        raw: match[0],
+                        lang: match[1] || 'text',
+                        title: match[2] || '',
+                        code: match[3].trim()
+                    };
+                }
+            },
+            renderer(token) {
+                // HTML转义函数
+                const escape = (html) => html
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+                
+                // 构建输出结构
+                return `
+                <div class="code-box">
+                    ${token.title ? `
+                    <div class="code-box-header">
+                        <span class="code-title">${escape(token.title)}</span>
+                        <span class="code-lang">${escape(token.lang)}</span>
+                    </div>` : ''}
+                    <pre class="code-content">${escape(token.code)}</pre>
+                </div>
+                `.trim();
+            }
+        }]
+    };
+}
+
+// 安全注册扩展
+marked.use(codeBox());
+

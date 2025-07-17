@@ -165,7 +165,7 @@ code{
     border-radius: 4px;
     padding: 0.225rem 0.35rem;
     border-top: 0px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Fira Code', monospace;
 }
 
 pre code{
@@ -189,6 +189,7 @@ pre code{
     word-break: normal;
     word-wrap:break-word;
     margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .custom-card-warning {
@@ -204,4 +205,52 @@ pre code{
 .custom-card-danger {
     border-left: 8px solid #f44336;
     background-color: #ffebee;
+}
+
+.custom-code-block {
+    background: #f6f8fa;
+    border-radius: 6px;
+    margin: 16px 0;
+    overflow: hidden;
+}
+
+/* codebox */
+
+.code-box {
+    border-radius: 8px;
+    background: #e6e6e6;
+    color: #5e5e5e;
+    margin: 1em 0;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.code-box-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75em 1em;
+    background: #dbdbdb;
+    border-bottom: 1px solid #b1b1b1;
+}
+
+.code-title {
+    font-weight: bold;
+    color: #5c5c5c;
+}
+
+.code-lang {
+    color: #225b8a;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+.code-content {
+    margin: 0;
+    padding: 1em;
+    overflow-x: auto;
+}
+
+.code-content code {
+    font-family: 'Fira Code', monospace;
+    line-height: 1.5;
 }
