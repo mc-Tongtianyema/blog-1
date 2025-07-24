@@ -3,14 +3,14 @@ import socketserver
 import os
 import urllib.parse
 
-PORT = 8000
+PORT = 8000 # 默认端口
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         # 解析路径和查询参数
         parsed_path = urllib.parse.urlparse(self.path)
         path = urllib.parse.unquote(parsed_path.path)  # 解码 URL 路径
-        query = parsed_path.query  # 获取查询参数（如 "blog=2"）
+        query = parsed_path.query  # 获取查询参数
 
         # 如果路径无后缀（如 /blog/article）
         if '.' not in os.path.basename(path):
