@@ -102,7 +102,6 @@ marked.use(image());
 
 // codebox
 marked.setOptions({ breaks: true, gfm: true }); // 初始化防BUG
-
 function codeBox() {
     return {
         extensions: [{
@@ -116,7 +115,7 @@ function codeBox() {
                 // 1. ```lang [title]
                 // 2. ```lang
                 // 3. ```
-                const rule = /^```([a-zA-Z0-9]*)(?:\s+\[([^\]]+)\])?\n([\s\S]*?)\n```/;
+                const rule = /^```([^\s\[\]]*)(?:\s+\[([^\]]+)\])?\n([\s\S]*?)\n```/;
                 const match = rule.exec(src);
                 if (match) {
                     return {
@@ -136,7 +135,7 @@ function codeBox() {
                     .replace(/>/g, '&gt;')
                     .replace(/"/g, '&quot;')
                     .replace(/'/g, '&#39;');
-                
+                    
                 // 构建输出结构
                 return `
                 <div class="code-box">
@@ -153,6 +152,5 @@ function codeBox() {
     };
 }
 
-// 安全注册扩展
 marked.use(codeBox());
 
