@@ -1,0 +1,113 @@
+/* Markdown 样式 */
+blockquote{
+    border-left: 5px solid #d1d1d1;
+    margin-left: 25px;
+    p{
+        margin-left: 20px;
+    }
+}
+
+a{
+    color: rgb(19, 89, 158);
+    text-decoration: none;
+    word-break: break-all;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+code{
+    background-color: #dfdfdf;
+    border-radius: 4px;
+    padding: 0.225rem 0.35rem;
+    border-top: 0px;
+    font-family: 'Fira Code', monospace;
+}
+
+pre code{
+    display: block;
+    width: 90%;
+    padding-left: 20px;
+    overflow: hidden;
+    overflow-x: auto;
+    border-top: 35px solid #cacaca;
+}
+
+/* 卡片 */
+.custom-card {
+    border-left: 8px solid #8f8f8f;
+    background-color: rgb(219, 219, 219);
+    border-radius: 4px;
+    padding: 0.225rem 0.35rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 90%;
+    word-break: normal;
+    word-wrap:break-word;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card-warning {
+    border-left: 8px solid #c48220;
+    background-color: #fff8e1;
+}
+
+.custom-card-info {
+    border-left: 8px solid #2196f3;
+    background-color: #e3f2fd;
+}
+
+.custom-card-danger {
+    border-left: 8px solid #f44336;
+    background-color: #ffebee;
+}
+
+.custom-code-block {
+    background: #f6f8fa;
+    border-radius: 6px;
+    margin: 16px 0;
+    overflow: hidden;
+}
+
+/* codebox */
+
+.code-box {
+    border-radius: 8px;
+    background: #e6e6e6;
+    color: #5e5e5e;
+    margin: 1em 0;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.code-box-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75em 1em;
+    background: #dbdbdb;
+    border-bottom: 1px solid #b1b1b1;
+}
+
+.code-title {
+    font-weight: bold;
+    color: #5c5c5c;
+}
+
+.code-lang {
+    color: #225b8a;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+.code-content {
+    margin: 0;
+    padding: 1em;
+    overflow-x: auto;
+}
+
+.code-content code {
+    font-family: 'Fira Code', monospace;
+    line-height: 1.5;
+}

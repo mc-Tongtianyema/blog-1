@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/tag.css" type="text/css">
     <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->    <!-- 引入 marked.js -->
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script><!-- 引入jquery-->
 </head>
@@ -29,11 +30,39 @@
 
 <!-- 文章列表 -->
 <script type="application/javascript"> 
+// 按钮涟漪
+function createRipple(event) {
+    event.stopPropagation();
+    const button = event.currentTarget;
+    
+    // 获取点击位置
+    const rect = button.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    
+    // 设置CSS变量
+    button.style.setProperty('--ripple-x', x + 'px');
+    button.style.setProperty('--ripple-y', y + 'px');
+    
+    // 移除之前的ripple类并重新触发动画
+    button.classList.remove('ripple');
+    void button.offsetWidth; // 触发重排
+    button.classList.add('ripple');
+    
+    // 获取ID并延迟跳转
+    const id = button.getAttribute('data-id');
+    setTimeout(() => {
+        window.location.href = `./blog/article?blog=${id}`;
+    }, 300);
+}
+
+
 // 创建card
-function createCard(title, publish, update, id) {
+function createCard(title, publish, update, id, tags_div) {
     return `
-    <div class="pulse-button" data-title="${encodeURIComponent(title)}" data-id="${encodeURIComponent(id)}">
+    <div class="pulse-button ripple-btn" data-title="${encodeURIComponent(title)}" data-id="${encodeURIComponent(id)}" onclick="createRipple(event)">
         <div class="title-view">${title}</div>
+        <div id="tags">${tags_div}</div>
         <div class="container">
             <div class="btn-found-date-text">创建日期: ${publish}</div>
             <div class="btn-found-date-text">更新日期: ${update}</div>
@@ -56,7 +85,18 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 遍历数据并拼接HTML
             $.each(data, function(infoIndex, info) {
-                htmlContent += createCard(info["title"], info["publish"], info["update"], info["id"]);
+                let article_tags = info["tag"];
+                let tags_div_output = "";
+                if (article_tags !== null){ // 不为null才加载tag
+                    let tag_div = "";
+                    for (const tag of article_tags){
+                        console.log(tag);
+                        tag_div += `<div class="article-tag"> ${tag} </div>`;
+                    }
+                    console.log(tag_div)
+                    tags_div_output = `<div class="blog-tag-container" id="tag-container" style="margin-left: 0; margin-bottom: 10px; margin-top: 5px;">${tag_div}</div>`;                    
+                }
+                htmlContent += createCard(info["title"], info["publish"], info["update"], info["id"], tags_div_output);
             });
             
             // 一次性设置HTML

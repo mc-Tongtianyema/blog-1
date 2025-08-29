@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
-    <!-- 引入 marked.js -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/tag.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/markdownstyle.css" type="text/css">
+    <!-- 引入 marked.js 使用本地版本 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->
+    <script src="/marked.min.js"></script>   
     <!--引入自定义 markdown-->
     <script src="/markdown_ex.js"></script>
     <!-- 引入jquery-->
@@ -26,6 +29,7 @@
     <div class="page-title" id="page-title"></div>
     </div>
 
+    <div id="tags"></div>
     <div class=“blog-time” id="time"></div>
     <div class="blog-content" id="content"></div>
 
@@ -69,10 +73,25 @@
                 let article_title = targetItem.title;
                 let article_publish = targetItem.publish;
                 let article_update = targetItem.update;
+                let article_tags = targetItem.tag;
                 // 页面处理
                 document.title = "Samable的博客文章-" + article_title;
                 document.getElementById('page-title').innerHTML = article_title;
-                // console.log('./' + article_title + '.md')
+                // tag处理
+                // console.log(!article_tags == null);
+                // console.log(article_tags !== null);
+                if (article_tags !== null){ // 不为null才加载tag
+                let tag_div = "";
+                for (const tag of article_tags){
+                    console.log(tag);
+                    tag_div += `<div class="article-tag"> ${tag} </div>`;
+                }
+                console.log(tag_div)
+                document.getElementById('tags').innerHTML = `<div class="blog-tag-container" id="tag-container">${tag_div}</div>`;                    
+                }
+                // console.log(article_tags);
+                // 标题处理
+                console.log('./' + article_title + '.md')
                 if (article_title.includes("#")){
                     const fileName = article_title + ".md";
                     const encodedFileName = encodeURIComponent(fileName);
